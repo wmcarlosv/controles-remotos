@@ -10,4 +10,8 @@ class Department extends Model
     use HasFactory;
 
     protected $table = 'departments';
+
+    public function block(){
+    	return $this->belongsTo('App\Models\Block');
+    }
 }
