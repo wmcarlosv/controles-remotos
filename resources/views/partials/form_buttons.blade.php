@@ -1,0 +1,2 @@
+<button class="btn btn-success"><i class="fas @if($type=='new') fa-save @else fa-sync-alt @endif"></i> Guardar</button>
+<a class="btn btn-danger" href="{{ route($baseRoute.'.index') }}" style="color:white;"><i class="fas fa-times"></i> Cancelar</a>
