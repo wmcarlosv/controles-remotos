@@ -3,17 +3,20 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Activity;
 
 class ActivitiesController extends Controller
 {
-    /**
+      /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        //
+        $title = "Actividades";
+        $activities = Activity::all();
+        return view('admin.activities.browse',['title'=>$title,'data'=>$activities]);
     }
 
     /**
@@ -23,7 +26,7 @@ class ActivitiesController extends Controller
      */
     public function create()
     {
-        //
+        
     }
 
     /**
@@ -34,7 +37,7 @@ class ActivitiesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+       
     }
 
     /**
@@ -56,7 +59,7 @@ class ActivitiesController extends Controller
      */
     public function edit($id)
     {
-        //
+       
     }
 
     /**
@@ -68,7 +71,7 @@ class ActivitiesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+      
     }
 
     /**
@@ -79,6 +82,6 @@ class ActivitiesController extends Controller
      */
     public function destroy($id)
     {
-        //
+       
     }
 }

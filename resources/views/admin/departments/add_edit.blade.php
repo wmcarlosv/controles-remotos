@@ -17,7 +17,7 @@
 				<div class="form-group">
 					<label>Bloque:</label>
 					<select class="form-control" name="block_id">
-						<option>Seleccione</option>
+						<option value="">Seleccione</option>
 						@foreach($blocks as $block)
 							<option @if(@$data->block_id == $block->id) selected='selected' @endif value="{{ $block->id }}">{{ $block->name }}</option>
 						@endforeach

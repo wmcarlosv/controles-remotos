@@ -13,7 +13,7 @@
 				<div class="form-group">
 					<label>Bloque:</label>
 					<select class="form-control" name="block_id" id="block_id">
-						<option value="0">Seleccione</option>
+						<option value="">Seleccione</option>
 						@foreach($blocks as $block)
 							<option value="{{ $block->id }}" @if(@$data->block_id == $block->id) selected='selected' @endif>{{ $block->name }}</option>
 						@endforeach
@@ -22,7 +22,7 @@
 				<div class="form-group">
 					<label>Departamento:</label>
 					<select class="form-control" name="department_id" id="department_id">
-						<option value="0">Seleccione</option>
+						<option value="">Seleccione</option>
 						@if(@$departments)
 							@foreach(@$departments as $department)
 								<option value="{{ $department->id }}" @if(@$data->department_id == $department->id) selected='selected' @endif>{{ $department->name }}</option>
@@ -38,8 +38,8 @@
 				<div class="form-group">
 					<label>Estatus A:</label>
 					<select class="form-control" name="status_a">
-						<option value="1">Activo</option>
-						<option value="0" @if(@$data->status_a == 0) selected='selected' @endif>Inactivo</option>
+						<option value="1" @if(@$data->status_a && @$data->status_a == 1) selected='selected' @endif>Activo</option>
+						<option value="0" @if(@$data->status_a && @$data->status_a == 0) selected='selected' @endif>Inactivo</option>
 					</select>
 				</div>
 				
@@ -50,8 +50,8 @@
 				<div class="form-group">
 					<label>Estatus B:</label>
 					<select class="form-control" name="status_b">
-						<option value="1">Activo</option>
-						<option value="0" @if(@$data->status_b == 0) selected='selected' @endif>Inactivo</option>
+						<option value="1" @if(@$data->status_b && @$data->status_b == 1) selected='selected' @endif>Activo</option>
+						<option value="0" @if(@$data->status_b && @$data->status_b == 0) selected='selected' @endif>Inactivo</option>
 					</select>
 				</div>
 				 <div class="form-group">
@@ -61,8 +61,8 @@
 				<div class="form-group">
 					<label>Estatus C:</label>
 					<select class="form-control" name="status_c">
-						<option value="1">Activo</option>
-						<option value="0" @if(@$data->status_c == 0) selected='selected' @endif>Inactivo</option>
+						<option value="1" @if(@$data->status_c && @$data->status_c == 1) selected='selected' @endif>Activo</option>
+						<option value="0" @if(@$data->status_c && @$data->status_c == 0) selected='selected' @endif>Inactivo</option>
 					</select>
 				</div>
 				 <div class="form-group">
@@ -72,8 +72,8 @@
 				<div class="form-group">
 					<label>Estatus D:</label>
 					<select class="form-control" name="status_d">
-						<option value="1">Activo</option>
-						<option value="0" @if(@$data->status_d == 0) selected='selected' @endif>Inactivo</option>
+						<option value="1" @if(@$data->status_d && @$data->status_d == 1) selected='selected' @endif>Activo</option>
+						<option value="0" @if(@$data->status_d && @$data->status_d == 0) selected='selected' @endif>Inactivo</option>
 					</select>
 				</div>
 				 <div class="form-group">
@@ -102,7 +102,7 @@
 		$("#block_id").change(function(){
 			let id = $(this).val();
 			let html = "<option>Seleccione</option>";
-			if(id !='0'){
+			if(id !=''){
 				$.get('/get-childrens/departments/block_id/'+id, function(response){
 					let data = JSON.parse(response);
 
