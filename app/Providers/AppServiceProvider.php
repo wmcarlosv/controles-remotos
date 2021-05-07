@@ -61,6 +61,11 @@ class AppServiceProvider extends ServiceProvider
                         'text'=>'Controles',
                         'url'=>route('controls.index'),
                         'icon'=>'fas fa-gamepad'
+                    ],
+                    [
+                        'text'=>'Actividades',
+                        'url'=>route('activities.index'),
+                        'icon'=>'fas fa-file-alt'
                     ]
                 );
             }else{
@@ -84,6 +89,11 @@ class AppServiceProvider extends ServiceProvider
                         'text'=>'Controles',
                         'url'=>route('controls.index'),
                         'icon'=>'fas fa-gamepad'
+                    ],
+                    [
+                        'text'=>'Actividades',
+                        'url'=>route('activities.index'),
+                        'icon'=>'fas fa-file-alt'
                     ]
                 );
             }

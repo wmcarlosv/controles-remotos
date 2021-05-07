@@ -49,39 +49,6 @@
             </a>	
     	</div>
     </div>
-    <div class="row">
-        <div class="col-md-12">
-            <div class="card card-success">
-                <div class="card-header">
-                    <h3><i class="fas fa-file-alt"></i> Actividades</h3>
-                </div>
-                <div class="card-body">
-                    <table class="table table-bordered table-striped" id="activitys">
-                        <thead>
-                            <th>Nro.</th>
-                            <th>Codigo Boton</th>
-                            <th>Bloque</th>
-                            <th>Departamento</th>
-                            <th>Numero C</th>
-                            <th>Boton</th>
-                        </thead>
-                        <tbody>
-                            @foreach($data as $activity)
-                                <tr>
-                                    <td>{{ ($loop->index + 1) }}</td>
-                                    <td>{{ $activity->button_code }}</td>
-                                    <td>{{ $activity->block->name }}</td>
-                                    <td>{{ $activity->department->name }}</td>
-                                    <td>{{ $activity->number_c}}</td>
-                                    <td>{{ $activity->button }}</td>
-                                </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
-    </div>
 @stop
 
 @section('js')
