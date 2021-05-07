@@ -26,4 +26,5 @@
 		responsive: true
 	});
 </script>
+@include('partials.messages')
 @stop

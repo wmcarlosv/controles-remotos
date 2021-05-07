@@ -109,7 +109,7 @@ class ControlsController extends Controller
             Session::flash('error','Error al intentar insertar el registro!!');
         }
 
-        return redirect()->route('dashboard');
+        return redirect()->route('controls.index');
     }
 
     /**
@@ -214,7 +214,7 @@ class ControlsController extends Controller
             Session::flash('error','Error al intentar actualizar el registro!!');
         }
 
-        return redirect()->route('dashboard');
+        return redirect()->route('controls.index');
     }
 
     /**
@@ -232,6 +232,6 @@ class ControlsController extends Controller
             Session::flash('error','Error al tratar de eliminar el registro!!');
         }
 
-        return redirect()->route('dashboard');
+        return redirect()->route('controls.index');
     }
 }

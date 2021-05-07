@@ -52,5 +52,5 @@
 @stop
 
 @section('js')
-	@include('partials.messages')
+    @include('partials.messages')
 @stop
