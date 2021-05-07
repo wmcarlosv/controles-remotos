@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Block;
 use Session;
+use Auth;
 
 class BlocksController extends Controller
 {
@@ -16,7 +17,12 @@ class BlocksController extends Controller
     public function index()
     {
         $title = "Bloques";
-        $blocks = Block::all();
+        if(Auth::user()->block_id){
+            $blocks = Block::where('id',Auth::user()->block_id)->get();
+        }else{
+            $blocks = Block::all();
+        }
+        
         return view('admin.blocks.browse',['title'=>$title,'data'=>$blocks]);
     }
 

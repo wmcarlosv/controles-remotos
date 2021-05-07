@@ -31,11 +31,11 @@
 								@if($user->role == 'admin')
 									<span class="badge badge-success">Administrador</span>
 								@else
-									<span class="badge badge-info">Cliente</span>
+									<span class="badge badge-info">Ayudante</span>
 								@endif
 							</td>
 							<td>{{ @$user->block->name }}</td>
-							<td>{{ @$user->dapartment->name }}</td>
+							<td>{{ @$user->department->name }}</td>
 							<td>
 								<a class="btn btn-info" href="{{ route('users.edit',$user->id) }}"><i class="fas fa-edit"></i></a>
 								@include('partials.delete_button',['deleteRoute'=>'users.destroy','id'=>$user->id])

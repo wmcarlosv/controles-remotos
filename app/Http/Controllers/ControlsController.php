@@ -7,6 +7,7 @@ use App\Models\Control;
 use App\Models\Block;
 use App\Models\Department;
 use Session;
+use Auth;
 
 class ControlsController extends Controller
 {
@@ -18,7 +19,12 @@ class ControlsController extends Controller
     public function index()
     {
         $title = "Controles";
-        $controls = Control::all();
+        if(Auth::user()->block_id){
+            $controls = Control::where('block_id',Auth::user()->block_id)->get();
+        }else{
+            $controls = Control::all();
+        }
+        
         return view('admin.controls.browse',['title'=>$title,'data'=>$controls]);
     }
 

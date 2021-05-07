@@ -20,6 +20,10 @@
     				<label>Telefono: </label>
     				<input type="text" name="phone" value="{{ Auth::user()->phone }}" class="form-control" />
     			</div>
+                <div class="form-group">
+                    <label>Correo: </label>
+                    <input type="text" name="email" value="{{ Auth::user()->email }}" class="form-control" />
+                </div>
 	    	</div>
 	    	<div class="card-footer text-right">
 	    		<button class="btn btn-success"><i class="fas fa-sync-alt"></i> Actualizar Perfil</button>

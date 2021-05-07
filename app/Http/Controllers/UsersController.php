@@ -157,12 +157,14 @@ class UsersController extends Controller
 
         $request->validate([
             'name' => 'required',
-            'phone' => 'required'
+            'phone' => 'required',
+            'email' => 'required|email'
         ]);
 
         $user = User::findorfail(Auth::user()->id);
         $user->name = $request->input('name');
         $user->phone = $request->input('phone');
+        $user->email = $request->input('email');
 
         if($user->update()){
             Session::flash('success','Registro actualizado con exito!!');

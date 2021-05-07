@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Department;
 use App\Models\Block;
 use Session;
+use Auth;
 
 class DepartmentsController extends Controller
 {
@@ -17,7 +18,12 @@ class DepartmentsController extends Controller
     public function index()
     {
         $title = "Departamentos";
-        $departments = Department::all();
+        if(Auth::user()->block_id){
+            $departments = Department::where('block_id',Auth::user()->block_id)->get();
+        }else{
+           $departments = Department::all(); 
+        }
+        
         return view('admin.departments.browse',['title'=>$title,'data'=>$departments]);
     }
 

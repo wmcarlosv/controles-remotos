@@ -28,7 +28,7 @@
 					 	<input type="radio" @if(@$data->role == 'admin') checked='checked' @endif name="role" value='admin' /> Administrador
 					</div>
 					<div class="checkbox">
-						<input type="radio" @if(@$data->role == 'customer') checked='checked' @endif name="role" value='customer' /> Cliente
+						<input type="radio" @if(@$data->role == 'customer') checked='checked' @endif name="role" value='customer' /> Ayundante
 					</div>
 				</div>
 				<div class="form-group">
