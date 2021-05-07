@@ -40,48 +40,48 @@
 							<td>{{ $control->code_a }}</td>
 							<td>
 								@if($control->status_a == 1)
-									<span class="badge badge-success">Activo</span>
+									<a href="{{ url('/updateColumn/controls/status_a/0/'.$control->id.'/controls.index') }}"><span class="badge badge-success">Activo</span></a>
 								@else
-									<span class="badge badge-danger">Inactivo</span>
+									<a href="{{ url('/updateColumn/controls/status_a/1/'.$control->id.'/controls.index') }}"><span class="badge badge-danger">Inactivo</span></a>
 								@endif
 							</td>
 							<td>{{ $control->code_b }}</td>
 							<td>
 								@if($control->status_b == 1)
-									<span class="badge badge-success">Activo</span>
+									<a href="{{ url('/updateColumn/controls/status_b/0/'.$control->id.'/controls.index') }}"><span class="badge badge-success">Activo</span></a>
 								@else
-									<span class="badge badge-danger">Inactivo</span>
+									<a href="{{ url('/updateColumn/controls/status_b/1/'.$control->id.'/controls.index') }}"><span class="badge badge-danger">Inactivo</span></a>
 								@endif
 							</td>
 							<td>{{ $control->code_c }}</td>
 							<td>
 								@if($control->status_c == 1)
-									<span class="badge badge-success">Activo</span>
+									<a href="{{ url('/updateColumn/controls/status_c/0/'.$control->id.'/controls.index') }}"><span class="badge badge-success">Activo</span></a>
 								@else
-									<span class="badge badge-danger">Inactivo</span>
+									<a href="{{ url('/updateColumn/controls/status_c/1/'.$control->id.'/controls.index') }}"><span class="badge badge-danger">Inactivo</span></a>
 								@endif
 							</td>
 							<td>{{ $control->code_d }}</td>
 							<td>
 								@if($control->status_d == 1)
-									<span class="badge badge-success">Activo</span>
+									<a href="{{ url('/updateColumn/controls/status_d/0/'.$control->id.'/controls.index') }}"><span class="badge badge-success">Activo</span></a>
 								@else
-									<span class="badge badge-danger">Inactivo</span>
+									<a href="{{ url('/updateColumn/controls/status_d/1/'.$control->id.'/controls.index') }}"><span class="badge badge-danger">Inactivo</span></a>
 								@endif
 							</td>
 							<td>{{ $control->number_c }}</td>
 							<td>
 								@if($control->is_active == 1)
-									<span class="badge badge-success">Si</span>
+									<a href="{{ url('/updateColumn/controls/is_active/0/'.$control->id.'/controls.index') }}"><span class="badge badge-success">Si</span></a>
 								@else
-									<span class="badge badge-danger">No</span>
+									<a href="{{ url('/updateColumn/controls/is_active/1/'.$control->id.'/controls.index') }}"><span class="badge badge-danger">No</span></a>
 								@endif
 							</td>
 							<td>
 								@if($control->is_deactive == 1)
-									<span class="badge badge-success">Si</span>
+									<a href="{{ url('/updateColumn/controls/is_deactive/0/'.$control->id.'/controls.index') }}"><span class="badge badge-success">Si</span></a>
 								@else
-									<span class="badge badge-danger">No</span>
+									<a href="{{ url('/updateColumn/controls/is_deactive/1/'.$control->id.'/controls.index') }}"><span class="badge badge-danger">No</span></a>
 								@endif
 							</td>
 							<td>

@@ -25,6 +25,10 @@ Route::get('/get-childrens/{table}/{column_parent_id}/{id}', function($table=nul
 	return $childrens;
 });
 
+Route::get('/updateColumn/{table}/{column}/{newVal}/{id}/{routeRedirect}', function($table=null, $column=null, $newVal=null, $id=null, $routeRedirect=null){
+	return updateColumn($table,$column,$newVal,$id,$routeRedirect);
+});
+
 Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function(){
 	Route::get('/dashboard', [App\Http\Controllers\HomeController::class, 'index'])->name('dashboard');
 	Route::resources([

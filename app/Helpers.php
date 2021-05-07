@@ -8,3 +8,8 @@
 		$data = DB::table($table)->count();
 		return $data;
 	}
+
+	function updateColumn($table,$column,$newVal,$id,$routeRedirect){
+		DB::table($table)->where('id',$id)->update([$column=>$newVal]);
+		return redirect()->route($routeRedirect);
+	}

@@ -25,9 +25,9 @@
 							<td>{{ $department->block->name }}</td>
 							<td>
 								@if($department->is_active == 1)
-									<span class="badge badge-success">Si</span>
+									<a href="{{ url('/updateColumn/departments/is_active/0/'.$department->id.'/departments.index') }}"><span class="badge badge-success">Si</span></a>
 								@else
-									<span class="badge badge-danger">No</span>
+									<a href="{{ url('/updateColumn/departments/is_active/1/'.$department->id.'/departments.index') }}"><span class="badge badge-danger">No</span></a>
 								@endif
 							</td>
 							<td>

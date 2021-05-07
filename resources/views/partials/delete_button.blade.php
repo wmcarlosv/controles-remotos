@@ -25,6 +25,21 @@
 	$("table.table").DataTable({
 		responsive: true
 	});
+
+	$("body").on("click","a > span", function(e){
+		e.preventDefault();
+		Swal.fire({
+		  title: 'Estas seguro de realizar esta acción?',
+		  type:'question',
+		  showConfirmButton: true,
+		  showCancelButton: true,
+		  confirmButtonText: `Confirmar`,
+		}).then((result) => {
+		  if (result.value) {
+		    location.href = $(this).parent().attr("href");
+		  }
+		});
+	});	
 </script>
 @include('partials.messages')
 @stop

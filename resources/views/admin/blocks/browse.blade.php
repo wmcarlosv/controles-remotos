@@ -23,9 +23,9 @@
 							<td>{{ $block->name }}</td>
 							<td>
 								@if($block->is_active == 1)
-									<span class="badge badge-success">Si</span>
+									<a href="{{ url('/updateColumn/blocks/is_active/0/'.$block->id.'/blocks.index') }}"><span class="badge badge-success">Si</span></a>
 								@else
-									<span class="badge badge-danger">No</span>
+									<a href="{{ url('/updateColumn/blocks/is_active/1/'.$block->id.'/blocks.index') }}"><span class="badge badge-danger">No</span></a>
 								@endif
 							</td>
 							<td>
@@ -43,7 +43,4 @@
 
 @section('js')
 	@include('partials.messages')
-	<script type="text/javascript">
-		$("#blocks").DataTable();
-	</script>
 @stop
