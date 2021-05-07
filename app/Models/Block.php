@@ -10,4 +10,8 @@ class Block extends Model
     use HasFactory;
 
     protected $table = 'blocks';
+
+    public function departments(){
+    	return $this->hasMany('App\Models\Department');
+    }
 }

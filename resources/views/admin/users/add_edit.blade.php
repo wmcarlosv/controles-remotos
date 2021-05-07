@@ -36,7 +36,7 @@
 					<select class="form-control" name="block_id" id="block_id">
 						<option value="0">Seleccione</option>
 						@foreach($blocks as $block)
-							<option value="{{ $block->id }}">{{ $block->name }}</option>
+							<option value="{{ $block->id }}" @if(@$data->block_id == $block->id) selected='selected' @endif>{{ $block->name }}</option>
 						@endforeach
 					</select>
 				</div>
@@ -44,6 +44,11 @@
 					<label>Departamento: </label>
 					<select class="form-control" name="department_id" id="department_id">
 						<option value="0">Seleccione</option>
+						@if(@$data->block_id)
+								@foreach(@$data->block->departments as $department)
+									<option value="{{ $department->id }}" @if(@$data->department_id == $department->id) selected='selected' @endif>{{ $department->name }}</option>
+								@endforeach
+						@endif
 					</select>
 				</div>
 				@if($type == 'new')
@@ -67,9 +72,15 @@
 	$(document).ready(function(){
 		$("#block_id").change(function(){
 			let id = $(this).val();
-			if(id){
+			let html = "<option value='0'>Seleccione</option>";
+			if(id!='0'){
 				$.get('/get-childrens/departments/block_id/'+id, function(response){
-					console.log(response);
+					let data = JSON.parse(response);
+					data.forEach((e)=>{
+						html+="<option value='"+e.id+"'>"+e.name+"</option>";
+					});
+					$("#department_id").html(html);
+					html = "";
 				});
 			}
 			

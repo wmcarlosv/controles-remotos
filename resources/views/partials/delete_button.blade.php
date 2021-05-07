@@ -5,6 +5,7 @@
 </form>
 
 @section('js')
+<script src="https://cdn.datatables.net/responsive/2.2.7/js/dataTables.responsive.min.js"></script>
 <script type="text/javascript">
 	$("body").on('click','button.btn-submit', function(e){
 		e.preventDefault();
@@ -19,6 +20,10 @@
 		    $("form.delete-form").submit();
 		  }
 		});
+	});
+
+	$("table.table").DataTable({
+		responsive: true
 	});
 </script>
 @stop
