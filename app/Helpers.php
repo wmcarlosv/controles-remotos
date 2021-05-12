@@ -20,7 +20,7 @@
 			DB::table("departments")->where('block_id',$id)->update([$column=>$newVal]);
 			DB::table("controls")->where([
 				['block_id','=',$id],
-				['is_deactive','<>',0]
+				['is_deactive','=',0]
 			])->update([$column=>$newVal]);
 		}
 
@@ -29,5 +29,14 @@
 				['department_id','=',$id],
 				['is_deactive','<>',0]
 			])->update([$column=>$newVal]);
+		}
+
+		if($table == "controls" and $column == "is_active"){
+			if($newVal == 1){
+				DB::Table("controls")->where("id",$id)->update(["is_deactive"=>0]);
+			}else{
+				DB::Table("controls")->where("id",$id)->update(["is_deactive"=>1]);
+			}
+			
 		}
 	}

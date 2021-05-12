@@ -3,24 +3,54 @@
 @section('title', 'Admin - '.$title)
 
 @section('content')
+
 	<div class="card card-success">
 		<div class="card-header">
 			<h3><i class="fas fa-file-alt"></i> {{ $title }}</h3>
 		</div>
 		<div class="card-body">
+			<form>
+				<div class="row">
+					<div class="col-md-3">
+						<div class="form-group">
+							<label>Fecha Desde:</label>
+							<input type="date" value="{{ @$date_from }}" class="form-control" name="date_from" />
+						</div>
+					</div>
+					<div class="col-md-3">
+						<div class="form-group">
+							<label>Fecha Hasta:</label>
+							<input type="date" value="{{ @$date_to }}" class="form-control" name="date_to" />
+						</div>
+					</div>
+					<div class="col-md-3" style="padding-top: 31px;">
+						<button class="btn btn-success"><i class="fas fa-search"></i> Buscar</button>
+					</div>
+					<div class="col-md-3">
+					    <div class="fomr-group" style="padding-top: 35px;">
+					    	<label>Activiades</label>
+					    	<span class="badge badge-success">{{ getCount('activities') }}</span>
+					    </div>
+					</div>
+				</div>
+			</form>
 			<table class="table table-bordered table-striped" id="activitys">
 				<thead>
 					<th>Nro.</th>
+					<th>Fecha</th>
+					<th>Hora</th>
+					<th>Numero C</th>
 					<th>Codigo Boton</th>
+					<th>Boton</th>
 					<th>Bloque</th>
 					<th>Departamento</th>
-					<th>Numero C</th>
-					<th>Boton</th>
 				</thead>
 				<tbody>
 					@foreach($data as $activity)
 						<tr>
 							<td>{{ ($loop->index + 1) }}</td>
+							<td>{{ date('d-m-Y',strtotime($activity->created_at)) }}</td>
+							<td>{{ date('H:m:s',strtotime($activity->created_at)) }}</td>
 							<td>{{ $activity->button_code }}</td>
 							<td>{{ $activity->block->name }}</td>
 							<td>{{ $activity->department->name }}</td>

@@ -54,6 +54,7 @@ class BlocksController extends Controller
         $block = new Block();
 
         $block->name = $request->input('name');
+        $block->max_num = $request->input('max_num');
         if($request->input('is_active')){
             $block->is_active = 1;
         }else{
@@ -111,6 +112,7 @@ class BlocksController extends Controller
         $block = Block::findorfail($id);
 
         $block->name = $request->input('name');
+        $block->max_num = $request->input('max_num');
          if($request->input('is_active')){
             $block->is_active = 1;
         }else{
@@ -135,6 +137,7 @@ class BlocksController extends Controller
     public function destroy($id)
     {
         $block = Block::findorfail($id);
+        
         if($block->delete()){
             Session::flash('success','Registro eliminado con exito!!');
         }else{

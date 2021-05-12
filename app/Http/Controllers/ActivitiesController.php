@@ -15,8 +15,22 @@ class ActivitiesController extends Controller
     public function index()
     {
         $title = "Actividades";
-        $activities = Activity::all();
-        return view('admin.activities.browse',['title'=>$title,'data'=>$activities]);
+        $date_from = '';
+        $date_to = '';
+        
+        if( (isset($_GET['date_from']) and isset($_GET['date_to'])) and (!empty($_GET['date_from']) and !empty($_GET['date_to']))  ){
+            $date_from = $_GET['date_from'];
+            $date_to = $_GET['date_to'];
+            $activities = Activity::where([
+                ['created_at','>=',$date_from],
+                ['created_at','<=',$date_to]
+            ])->get();
+        }else{
+            $activities = Activity::all();
+        }
+        
+        
+        return view('admin.activities.browse',['title'=>$title,'data'=>$activities, 'date_from'=>$date_from, 'date_to'=>$date_to]);
     }
 
     /**

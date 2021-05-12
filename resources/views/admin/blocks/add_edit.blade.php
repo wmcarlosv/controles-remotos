@@ -14,6 +14,10 @@
 					<label>Nombre:</label>
 					<input type="text" name="name" class="form-control" value="{{ @$data->name }}" />
 				</div>
+				<div class="form-group">
+					<label>Intentos Maximos:</label>
+					<input type="text" name="max_num" class="form-control" value="{{ @$data->max_num }}" />
+				</div>
 				<div class="form-group form-check">
 				    <input type="checkbox" class="form-check-input" @if(@$data->is_active == 1) checked='checked' @endif value="1" name="is_active">
 				    <label class="form-check-label">Activo</label>

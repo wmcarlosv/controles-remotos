@@ -14,4 +14,8 @@ class Block extends Model
     public function departments(){
     	return $this->hasMany('App\Models\Department');
     }
+
+    public function controls(){
+    	return $this->hasMany('App\Models\Control');
+    }
 }

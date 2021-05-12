@@ -18,6 +18,10 @@
 					<th>Nro.</th>
 					<th>Nombre</th>
 					<th>Activo</th>
+					<th>Creado</th>
+					<th>Actualizado</th>
+					<th>Eliminar</th>
+					<th>Intentos Maximos</th>
 					<th>-</th>
 				</thead>
 				<tbody>
@@ -31,7 +35,18 @@
 								@else
 									<a href="{{ url('/updateColumn/blocks/is_active/1/'.$block->id.'/blocks.index') }}"><span class="badge badge-danger">No</span></a>
 								@endif
+								
 							</td>
+							<td>{{ date('d-m-Y', strtotime($block->created_at)) }}</td>
+							<td>{{ date('d-m-Y', strtotime($block->updated_at)) }}</td>
+							<td>
+								@if($block->is_deleted == 1)
+									<a class="btn btn-success is_deleted" href="{{ url('/updateColumn/blocks/is_deleted/0/'.$block->id.'/blocks.index') }}"><i class="fas fa-check"></i> Si</a>
+								@else
+									<a class="btn btn-danger is_deleted" href="{{ url('/updateColumn/blocks/is_deleted/1/'.$block->id.'/blocks.index') }}"><i class="fas fa-times"></i> No</a>
+								@endif
+							</td>
+							<td>{{ $block->max_num }}</td>
 							<td>
 								<a class="btn btn-info" href="{{ route('blocks.edit',$block->id) }}"><i class="fas fa-edit"></i></a>
 								@include('partials.delete_button',['deleteRoute'=>'blocks.destroy','id'=>$block->id])

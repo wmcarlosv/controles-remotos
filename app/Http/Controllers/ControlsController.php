@@ -8,6 +8,7 @@ use App\Models\Block;
 use App\Models\Department;
 use Session;
 use Auth;
+use DB;
 
 class ControlsController extends Controller
 {
@@ -19,13 +20,35 @@ class ControlsController extends Controller
     public function index()
     {
         $title = "Controles";
-        if(Auth::user()->block_id){
-            $controls = Control::where('block_id',Auth::user()->block_id)->get();
+        $block_id = 0;
+        $department_id = 0;
+        $selectedBlock = [];
+
+        if(isset($_GET['block_id']) and !empty($_GET['block_id'])){
+            $block_id = $_GET['block_id'];
+            $selectedBlock = Block::findorfail($block_id);
+            $controls = Control::where('block_id',$block_id)->get();
+            if($_GET['department_id']){
+                $department_id = $_GET['department_id'];
+                $controls = Control::where([
+                    ['block_id','=',$block_id],
+                    ['department_id','=',$department_id]
+                ])->get();
+            }
         }else{
-            $controls = Control::all();
+
+            if(Auth::user()->block_id){
+                $controls = Control::where('block_id',Auth::user()->block_id)->get();
+            }else{
+                $controls = Control::all();
+            }
+
         }
-        
-        return view('admin.controls.browse',['title'=>$title,'data'=>$controls]);
+    
+
+        $blocks = Block::all();
+
+        return view('admin.controls.browse',['title'=>$title,'data'=>$controls, 'blocks'=>$blocks, 'block_id'=>$block_id, 'selectedBlock'=>$selectedBlock, 'department_id'=>$department_id]);
     }
 
     /**
@@ -98,15 +121,10 @@ class ControlsController extends Controller
         $control->is_active = $request->input('is_active');
         if($request->input('is_active')){
             $control->is_active = 1;
+            $control->is_deactive = 0;
         }else{
             $control->is_active = 0;
-        }
-
-        $control->is_deactive = $request->input('is_deactive');
-        if($request->input('is_deactive')){
             $control->is_deactive = 1;
-        }else{
-            $control->is_deactive = 0;
         }
 
         if($control->save()){
@@ -203,15 +221,10 @@ class ControlsController extends Controller
         $control->is_active = $request->input('is_active');
         if($request->input('is_active')){
             $control->is_active = 1;
+            $control->is_deactive = 0;
         }else{
             $control->is_active = 0;
-        }
-
-        $control->is_deactive = $request->input('is_deactive');
-        if($request->input('is_deactive')){
             $control->is_deactive = 1;
-        }else{
-            $control->is_deactive = 0;
         }
 
         if($control->update()){

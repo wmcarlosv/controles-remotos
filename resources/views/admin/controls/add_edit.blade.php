@@ -101,7 +101,7 @@
 	$(document).ready(function(){
 		$("#block_id").change(function(){
 			let id = $(this).val();
-			let html = "<option>Seleccione</option>";
+			let html = "<option value=''>Seleccione</option>";
 			if(id !=''){
 				$.get('/get-childrens/departments/block_id/'+id, function(response){
 					let data = JSON.parse(response);

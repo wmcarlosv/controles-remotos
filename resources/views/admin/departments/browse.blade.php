@@ -19,6 +19,9 @@
 					<th>Nombre</th>
 					<th>Bloque</th>
 					<th>Activo</th>
+					<th>Creado</th>
+					<th>Actualizado</th>
+					<th>Eliminado</th>
 					<th>-</th>
 				</thead>
 				<tbody>
@@ -32,6 +35,15 @@
 									<a href="{{ url('/updateColumn/departments/is_active/0/'.$department->id.'/departments.index') }}"><span class="badge badge-success">Si</span></a>
 								@else
 									<a href="{{ url('/updateColumn/departments/is_active/1/'.$department->id.'/departments.index') }}"><span class="badge badge-danger">No</span></a>
+								@endif
+							</td>
+							<td>{{ date('d-m-Y',strtotime($department->created_at)) }}</td>
+							<td>{{ date('d-m-Y',strtotime($department->updated_at)) }}</td>
+							<td>
+								@if($department->is_deleted == 1)
+									<a class="btn btn-success is_deleted" href="{{ url('/updateColumn/departments/is_deleted/0/'.$department->id.'/departments.index') }}"><i class="fas fa-check"></i> Si</a>
+								@else
+									<a class="btn btn-danger is_deleted" href="{{ url('/updateColumn/departments/is_deleted/1/'.$department->id.'/departments.index') }}"><i class="fas fa-times"></i> No</a>
 								@endif
 							</td>
 							<td>

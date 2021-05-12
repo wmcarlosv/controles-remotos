@@ -4,6 +4,7 @@
 
 @section('css')
 	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/1.7.0/css/buttons.dataTables.min.css">
+	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/1.7.0/css/buttons.dataTables.min.css">
 @stop
 
 @section('content')
@@ -22,6 +23,8 @@
 					<th>Rol</th>
 					<th>Bloque</th>
 					<th>Departamento</th>
+					<th>Fecha Creacion</th>
+					<th>Fecha Actualizacion</th>
 					<th>-</th>
 				</thead>
 				<tbody>
@@ -40,6 +43,8 @@
 							</td>
 							<td>{{ @$user->block->name }}</td>
 							<td>{{ @$user->department->name }}</td>
+							<td>{{ $user->created_at }}</td>
+							<td>{{ $user->updated_at }}</td>
 							<td>
 								<a class="btn btn-info" href="{{ route('users.edit',$user->id) }}"><i class="fas fa-edit"></i></a>
 								@include('partials.delete_button',['deleteRoute'=>'users.destroy','id'=>$user->id])
