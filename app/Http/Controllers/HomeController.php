@@ -41,12 +41,13 @@ class HomeController extends Controller
                                         a.button,
                                         date_format(a.created_at, '%d-%m-%Y') as date,
                                         count(a.number_c) as qty,
-                                        b.max_num 
+                                        b.max_num, 
+                                        date_format(now(),'%d-%m-%Y') as actual_date
                                     from activities a 
                                         inner join blocks b on b.id = a.block_id 
                                         inner join departments d on d.id = a.department_id
-                                    group by a.number_c, date, block, department, a.number_c, a.button, b.max_num
-                                    having qty >= b.max_num "));
+                                    group by a.number_c, date, block, department, a.number_c, a.button,b.max_num
+                                    having qty >= b.max_num and date = actual_date"));
 
         return view('admin.possible_cloning',compact('title','data'));
     }
