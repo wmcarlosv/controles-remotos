@@ -66,6 +66,11 @@ class AppServiceProvider extends ServiceProvider
                         'text'=>'Actividades',
                         'url'=>route('activities.index'),
                         'icon'=>'fas fa-file-alt'
+                    ],
+                    [
+                        'text'=>'Posible Clonacion',
+                        'url'=>route('possible_cloning'),
+                        'icon'=>'fas fa-copy'
                     ]
                 );
             }else{
