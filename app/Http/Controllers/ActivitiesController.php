@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Activity;
+use Session;
 
 class ActivitiesController extends Controller
 {
@@ -96,6 +97,14 @@ class ActivitiesController extends Controller
      */
     public function destroy($id)
     {
-       
+        $activity = Activity::findorfail($id);
+
+        if($activity->delete()){
+            Session::flash('success','Actividad eliminada con Exito!!');
+        }else{
+            Session::flash('error','Error al intentar eliminar la Actividad!!');
+        }
+
+        return redirect()->route('activities.index');
     }
 }

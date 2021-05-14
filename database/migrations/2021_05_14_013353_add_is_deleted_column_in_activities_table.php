@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddIsDeletedColumnInControlsTable extends Migration
+class AddIsDeletedColumnInActivitiesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,8 @@ class AddIsDeletedColumnInControlsTable extends Migration
      */
     public function up()
     {
-        Schema::table('controls', function (Blueprint $table) {
-            $table->boolean('is_deleted')->default(false);
+        Schema::table('activities', function (Blueprint $table) {
+            $table->boolean('is_deleted')->nullable()->default(0);
         });
     }
 
@@ -25,7 +25,7 @@ class AddIsDeletedColumnInControlsTable extends Migration
      */
     public function down()
     {
-        Schema::table('controls', function (Blueprint $table) {
+        Schema::table('activities', function (Blueprint $table) {
             //
         });
     }

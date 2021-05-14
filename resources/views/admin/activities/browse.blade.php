@@ -25,6 +25,7 @@
 					</div>
 					<div class="col-md-3" style="padding-top: 31px;">
 						<button class="btn btn-success"><i class="fas fa-search"></i> Buscar</button>
+
 					</div>
 					<div class="col-md-3">
 					    <div class="fomr-group" style="padding-top: 35px;">
@@ -44,6 +45,8 @@
 					<th>Boton</th>
 					<th>Bloque</th>
 					<th>Departamento</th>
+					<th>Eliminado</th>
+					<th>/</th>
 				</thead>
 				<tbody>
 					@foreach($data as $activity)
@@ -56,6 +59,16 @@
 							<td>{{ $activity->department->name }}</td>
 							<td>{{ $activity->number_c}}</td>
 							<td>{{ $activity->button }}</td>
+							<td>
+								@if($activity->is_deleted == 1)
+									<a class="btn btn-success is_deleted" href="{{ url('/updateColumn/activities/is_deleted/0/'.$activity->id.'/activities.index') }}"><i class="fas fa-check"></i> Si</a>
+								@else
+									<a class="btn btn-danger is_deleted" href="{{ url('/updateColumn/activities/is_deleted/1/'.$activity->id.'/activities.index') }}"><i class="fas fa-times"></i> No</a>
+								@endif
+							</td>
+							<td>
+								@include('partials.delete_button',['deleteRoute'=>'activities.destroy','id'=>$activity->id])
+							</td>
 						</tr>
 					@endforeach
 				</tbody>

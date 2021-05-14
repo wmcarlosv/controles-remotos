@@ -43,4 +43,5 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function(){
 	Route::put('/update_profile',[\App\Http\Controllers\UsersController::class,'update_profile'])->name('update_profile');
 	Route::put('/change_password',[\App\Http\Controllers\UsersController::class,'change_password'])->name('change_password');
 	Route::get('/possible-cloning',[\App\Http\Controllers\HomeController::class,'possible_cloning'])->name('possible_cloning');
+	
 });
