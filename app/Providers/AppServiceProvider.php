@@ -71,6 +71,11 @@ class AppServiceProvider extends ServiceProvider
                         'text'=>'Posible Clonacion',
                         'url'=>route('possible_cloning'),
                         'icon'=>'fas fa-copy'
+                    ],
+                    [
+                        'text'=>'Licencias de Activacion',
+                        'url'=>route('licences.index'),
+                        'icon'=>'fas fa-id-badge'
                     ]
                 );
             }else{

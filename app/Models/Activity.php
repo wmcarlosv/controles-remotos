@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use DB;
 
 class Activity extends Model
 {
@@ -17,5 +18,9 @@ class Activity extends Model
 
     public function department(){
     	return $this->belongsTo('App\Models\Department');
+    }
+
+    public static function getActivityByNumberControl($numberControl){
+    	return DB::table("activities")->get();
     }
 }

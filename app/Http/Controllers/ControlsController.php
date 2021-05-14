@@ -127,6 +127,8 @@ class ControlsController extends Controller
             $control->is_deactive = 1;
         }
 
+        $control->is_deleted = false;
+
         if($control->save()){
             Session::flash('success','Registro insertado con exito!!');
         }else{

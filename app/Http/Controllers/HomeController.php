@@ -34,21 +34,40 @@ class HomeController extends Controller
 
     public function possible_cloning(){
         $title = "Posible Clonacion";
-        $data = DB::select(DB::raw("select 
-                                        b.name as block,
-                                        d.name as department,
-                                        a.number_c,
-                                        a.button,
-                                        date_format(a.created_at, '%d-%m-%Y') as date,
-                                        count(a.number_c) as qty,
-                                        b.max_num, 
-                                        date_format(now(),'%d-%m-%Y') as actual_date
+        $data = [];
+        $date_filtre = "";
+        
+        if(isset($_GET['date_filtre']) and !empty($_GET['date_filtre'])){
+            $date_filtre = $_GET['date_filtre'];
+            $data = DB::select(DB::raw("select 
+                                    b.name as block, 
+                                    d.name as department, 
+                                    a.number_c, 
+                                    date_format(a.created_at, '%Y-%m-%d') as date, 
+                                    count(a.number_c) as qty, 
+                                    b.max_num, date_format(now(),'%d-%m-%Y') as actual_date 
                                     from activities a 
-                                        inner join blocks b on b.id = a.block_id 
-                                        inner join departments d on d.id = a.department_id
-                                    group by a.number_c, date, block, department, a.number_c, a.button,b.max_num
+                                    inner join blocks b on b.id = a.block_id 
+                                    inner join departments d on d.id = a.department_id 
+                                    group by a.number_c, date, block, department, a.number_c,b.max_num 
+                                    having qty >= b.max_num and date = '$date_filtre'"));
+        }else{
+            $data = DB::select(DB::raw("select 
+                                    b.name as block, 
+                                    d.name as department, 
+                                    a.number_c, 
+                                    date_format(a.created_at, '%d-%m-%Y') as date, 
+                                    count(a.number_c) as qty, 
+                                    b.max_num, date_format(now(),'%d-%m-%Y') as actual_date 
+                                    from activities a 
+                                    inner join blocks b on b.id = a.block_id 
+                                    inner join departments d on d.id = a.department_id 
+                                    group by a.number_c, date, block, department, a.number_c,b.max_num 
                                     having qty >= b.max_num and date = actual_date"));
+        }
 
-        return view('admin.possible_cloning',compact('title','data'));
+
+
+       return view('admin.possible_cloning',compact('title','data','date_filtre'));
     }
 }

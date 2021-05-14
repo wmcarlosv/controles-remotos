@@ -36,7 +36,8 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function(){
 		'blocks' => \App\Http\Controllers\BlocksController::class,
 		'departments' => \App\Http\Controllers\DepartmentsController::class,
 		'controls' => \App\Http\Controllers\ControlsController::class,
-		'activities' => \App\Http\Controllers\ActivitiesController::class
+		'activities' => \App\Http\Controllers\ActivitiesController::class,
+		'licences' => \App\http\Controllers\LicencesController::class
 	]);
 	Route::get('/profile',[\App\Http\Controllers\UsersController::class, 'profile'])->name('profile');
 	Route::put('/update_profile',[\App\Http\Controllers\UsersController::class,'update_profile'])->name('update_profile');
