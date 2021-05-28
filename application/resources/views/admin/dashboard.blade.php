@@ -43,7 +43,7 @@
     			<span class="info-box-icon bg-yellow"><i class="fas fa-gamepad"></i></span>
     			<div class="info-box-content">
 				    <span class="info-box-text">Controles</span>
-				    <span class="info-box-number">{{ getCount('Controls') }}</span>
+				    <span class="info-box-number">{{ getCount('controls') }}</span>
 				</div>
     		</div>
             </a>	
