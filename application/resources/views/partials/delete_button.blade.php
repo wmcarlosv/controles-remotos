@@ -70,7 +70,7 @@
 		let id = $(this).val();
 		let html = "<option value=''>Seleccione</option>";
 		if(id !=''){
-			$.get('/get-childrens/departments/block_id/'+id, function(response){
+			$.get('{{ env("APP_URL") }}get-childrens/departments/block_id/'+id, function(response){
 				let data = JSON.parse(response);
 
 				data.forEach((e)=>{

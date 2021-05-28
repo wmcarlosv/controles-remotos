@@ -45,3 +45,10 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function(){
 	Route::get('/possible-cloning',[\App\Http\Controllers\HomeController::class,'possible_cloning'])->name('possible_cloning');
 	
 });
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

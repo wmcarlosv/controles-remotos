@@ -74,7 +74,7 @@
 			let id = $(this).val();
 			let html = "<option value='0'>Seleccione</option>";
 			if(id!='0'){
-				$.get('/get-childrens/departments/block_id/'+id, function(response){
+				$.get('{{ env("APP_URL") }}get-childrens/departments/block_id/'+id, function(response){
 					let data = JSON.parse(response);
 					data.forEach((e)=>{
 						html+="<option value='"+e.id+"'>"+e.name+"</option>";

@@ -4,7 +4,7 @@
     <link rel="stylesheet" href="{{ asset('vendor/icheck-bootstrap/icheck-bootstrap.min.css') }}">
     <style type="text/css">
         body{
-            background: url('/img/control_remoto_background.jpg') !important;
+            background: url('img/control_remoto_background.jpg') !important;
             background-repeat: no-repeat !important;
             background-size: 100% 100% !important;
             background-attachment: fixed !important;

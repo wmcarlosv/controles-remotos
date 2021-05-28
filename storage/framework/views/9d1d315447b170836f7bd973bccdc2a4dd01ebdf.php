@@ -1,0 +1,2 @@
+<button class="btn btn-success"><i class="fas <?php if($type=='new'): ?> fa-save <?php else: ?> fa-sync-alt <?php endif; ?>"></i> Guardar</button>
+<a class="btn btn-danger" href="<?php echo e(route($baseRoute.'.index')); ?>" style="color:white;"><i class="fas fa-times"></i> Cancelar</a><?php /**PATH C:\xampp\htdocs\controles-remotos\resources\views/partials/form_buttons.blade.php ENDPATH**/ ?>
